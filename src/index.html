@@ -7,9 +7,43 @@
     <link rel="icon" href="./favicon.ico" />
     <title>UCSB Vue Class</title>
     <!-- ADD CSS INCLUDES HERE -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">-->
+    <!--<link rel="stylesheet" href="https://cdn.rawgit.com/yegor256/tacit/gh-pages/tacit-css-1.3.8.min.css"/>-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/3.0.7/marx.min.css"/>-->
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+      />
+    <link rel="stylesheet"
+      href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
+      />
+    <style>
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #2c3e50;
+                background: #f5f5f5;
+            }
+        </style>
   </head>
   <body>
     <div id="app"></div>
-    <script src="../src/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script> // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCI8KsgKqVFAud6y_L1qlYK2cJanpk4WRc",
+        authDomain: "test123-2d56d.firebaseapp.com",
+        databaseURL: "https://test123-2d56d.firebaseio.com",
+        projectId: "test123-2d56d",
+        storageBucket: "test123-2d56d.appspot.com",
+        messagingSenderId: "349985493175"
+      };
+      window.firebase = firebase;
+      firebase.initializeApp(config);
+      var db = firebase.firestore();</script>
+    <script src="./main.js"></script>
   </body>
 </html>
