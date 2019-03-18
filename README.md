@@ -1,5 +1,7 @@
 # Final Project Steps to follow
 
+## Download the code needed for the assignment here https://github.com/agrublev/ucsb-vue/archive/final.zip
+
 ## Step 1
 
 Run the following command in terminal
