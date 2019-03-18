@@ -6,10 +6,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="./favicon.ico" />
     <title>UCSB Vue Class</title>
-    <!-- ADD CSS INCLUDES HERE -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #2c3e50;
+        background: #f5f5f5;
+      }
+    </style>
+
   </head>
   <body>
     <div id="app"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAIZxwBzGzGFqsu4IVEcXcV3fLvXmZ7W2o",
+        authDomain: "vueexample-f5cde.firebaseapp.com",
+        databaseURL: "https://vueexample-f5cde.firebaseio.com",
+        projectId: "vueexample-f5cde",
+        storageBucket: "vueexample-f5cde.appspot.com",
+        messagingSenderId: "34906561646"
+      };
+      firebase.initializeApp(config);
+      window.db = firebase.firestore();
+    </script>
     <script src="../src/main.js"></script>
   </body>
 </html>

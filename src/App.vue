@@ -1,68 +1,90 @@
 <template>
     <div id="app">
-        <div class="calculator">
-            <div class="enterSpeed">
-                <input
-                    type="number"
-                    class="speed"
-                    @keyup="calculate"
-                    @change="calculate"
-                    @focus="$event.target.select()"
-                    v-model="speedMiles"
-                />
-                miles
-            </div>
-            <div>
-                Result: <b>{{ speedKilometers }}km</b>
-            </div>
-            <div>
-                <h4>Calculate in meters:</h4>
-                <button @click="calculateMeters">Convert Now</button>
+        <div class="tweeter">
+            <h2>UCSB Web Dev Twitter Clone</h2>
+            <form @submit="addTweet($event)" class="tweet">
+                <Name @handleName="handleName"></Name>
+                <textarea
+                    type="text"
+                    @keydown="updateChars($event)"
+                    class="message"
+                    v-model="tweetMessage"
+                ></textarea>
+                <button type="submit">Add Tweet</button>
                 <div>
-                    <input class="speed" v-model="meters" />
-                    meters
+                    CHARS: <b>{{ chars }}/200</b>
                 </div>
-            </div>
-            <ExampleList></ExampleList>
-            <button type="button" @click="toggleExample">Show / Hide Example Component</button>
-            <div v-if="showExample">
-                <ExampleComponent></ExampleComponent>
-            </div>
-            <div v-show="showExample">
-                <ExampleComponent></ExampleComponent>
-            </div>
+            </form>
+            <ul class="tweet-list">
+                <li v-for="item in list">
+                    <h3>
+                        <img v-bind:src=`https://ui-avatars.com/api/?name=${item.name}` />
+                        <span>{{ item.name }}</span>
+                        <i>{{ formatDate(item.date) }}</i>
+                    </h3>
+                    <p>{{ item.message }}</p>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
 
 <script>
-import ExampleComponent from "./ExampleComponent.vue";
-import ExampleList from "./ExampleList.vue";
+import Name from "./Name.vue";
 
 export default {
     methods: {
-        calculateMeters() {
-            this.meters = Math.round(this.speedKilometers * 1000);
+        handleName(name) {
+            this.name = name;
         },
-        calculate() {
-            this.speedKilometers = (this.speedMiles * 1.60934).toFixed(2);
+        updateChars(e) {
+            this.chars = this.tweetMessage.length;
+            if (this.chars > 199) {
+                alert("Can't add more!");
+                this.tweetMessage = this.tweetMessage.slice(0, 199);
+                e.preventDefault();
+            }
+            return false;
         },
-        toggleExample() {
-            this.showExample = !this.showExample;
+        formatDate(date) {
+            return new Date(date).toTimeString().slice(0, 8);
+        },
+        addTweet(e) {
+        	e.preventDefault();
+            if (this.name.length && this.tweetMessage.length && this.tweetMessage.length < 200) {
+                db.collection("tweets")
+                    .add({
+                        name: this.name,
+                        message: this.tweetMessage,
+                        date: Date.now()
+                    })
+                    .then(e => {
+                        this.tweetMessage = "";
+                    });
+            }
+            return false;
         }
     },
     data: () => {
         return {
-            speedMiles: 1,
-            speedKilometers: 1.61,
-            meters: 1610,
-            showExample: false
+            name: "",
+            tweetMessage: "",
+            chars: 0,
+            list: []
         };
     },
-    components: {
-        ExampleComponent,
-        ExampleList
-    }
+    created() {
+        db.collection("tweets")
+            .orderBy("date", "desc")
+            .onSnapshot(doc => {
+                doc.docChanges().forEach(d => {
+                    if (d.type === "added") {
+                        this.list.unshift(d.doc.data());
+                    }
+                });
+            });
+    },
+    components: { Name }
 };
 </script>
 <style lang="less">
