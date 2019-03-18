@@ -65,7 +65,7 @@ Add the following html code inside the App.vue
 
 ## Step 4
 
-Replace the methods object with the following object 
+Replace the methods with the following object inside the App.vue
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Replace the methods object with the following object
 
 ## Step 5
 
-Replace the returned object in the data function with this object
+Add the following JSON object to the data return statement inside the App.vue
 
 ```javascript
 {
@@ -117,7 +117,7 @@ Replace the returned object in the data function with this object
 
 ## Step 6
 
-Import the Name component using the import statement like this
+Import the **Name** component using the import statement like this (inside the App.vue at the top of the script tag)
 
 ```javascript
 import Name from "./Name.vue";
@@ -125,7 +125,7 @@ import Name from "./Name.vue";
 
 ## Step 7
 
-Tell vue you want to use the Name component with this code
+Tell vue you want to use the Name component with this code, should be added in App.vue where it says Step 7
 
 ```javascript
 components: { Name }
