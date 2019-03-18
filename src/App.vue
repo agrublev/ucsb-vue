@@ -2,76 +2,18 @@
     <div id="app">
         <div class="tweeter">
             <h2>UCSB Web Dev Twitter Clone</h2>
-            <form @submit="addTweet($event)" class="tweet">
-                <Name @handleName="handleName"></Name>
-                <textarea
-                    type="text"
-                    @keydown="updateChars($event)"
-                    class="message"
-                    v-model="tweetMessage"
-                ></textarea>
-                <button type="submit">Add Tweet</button>
-                <div>
-                    CHARS: <b>{{ chars }}/200</b>
-                </div>
-            </form>
-            <ul class="tweet-list">
-                <li v-for="item in list">
-                    <h3>
-                        <img v-bind:src=`https://ui-avatars.com/api/?name=${item.name}` />
-                        <span>{{ item.name }}</span>
-                        <i>{{ formatDate(item.date) }}</i>
-                    </h3>
-                    <p>{{ item.message }}</p>
-                </li>
-            </ul>
+            <!-- STEP 3 -->
         </div>
     </div>
 </template>
 
 <script>
-import Name from "./Name.vue";
+// Step 6
 
 export default {
-    methods: {
-        handleName(name) {
-            this.name = name;
-        },
-        updateChars(e) {
-            this.chars = this.tweetMessage.length;
-            if (this.chars > 199) {
-                alert("Can't add more!");
-                this.tweetMessage = this.tweetMessage.slice(0, 199);
-                e.preventDefault();
-            }
-            return false;
-        },
-        formatDate(date) {
-            return new Date(date).toTimeString().slice(0, 8);
-        },
-        addTweet(e) {
-        	e.preventDefault();
-            if (this.name.length && this.tweetMessage.length && this.tweetMessage.length < 200) {
-                db.collection("tweets")
-                    .add({
-                        name: this.name,
-                        message: this.tweetMessage,
-                        date: Date.now()
-                    })
-                    .then(e => {
-                        this.tweetMessage = "";
-                    });
-            }
-            return false;
-        }
-    },
+    methods: {/**Step 4*/},
     data: () => {
-        return {
-            name: "",
-            tweetMessage: "",
-            chars: 0,
-            list: []
-        };
+        return {/**Step 5*/};
     },
     created() {
         db.collection("tweets")
@@ -84,7 +26,7 @@ export default {
                 });
             });
     },
-    components: { Name }
+    // Step 7
 };
 </script>
 <style lang="less">
