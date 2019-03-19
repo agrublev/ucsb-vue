@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="192px" height="192px" viewBox="0 0 192 192" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logoSymbol" transform="translate(13.000000, 29.000000)">
+            <g id="hat-3">
+                <path d="M26,55 L26,83.7824865 C26,84.5449844 82.927597,111 83.5,111 C84.072403,111 141,84.5449844 141,83.7824865 L141,55" id="Shape" stroke="#FFBF03" stroke-width="10.212766"></path>
+                <polyline id="Shape" stroke="#FFBF03" stroke-width="10.212766" points="153 118 165 135 141 135 153 118 153 50"></polyline>
+                <polygon id="Shape" stroke="#FFBF03" stroke-width="10.212766" stroke-linecap="square" points="83.5 85 0 42.5 83.5 0 167 42.5"></polygon>
+                <g id="&lt;/&gt;" transform="translate(37.000000, 6.000000)" fill="#6B6262" fill-opacity="0.656816123" font-family="UbuntuMono-Regular, Ubuntu Mono" font-weight="normal">
+                    <text id="&lt;" font-size="65.3617021">
+                        <tspan x="0.9433431" y="54">&lt;</tspan>
+                    </text>
+                    <text id="/" font-size="49.0212766">
+                        <tspan x="34.3711853" y="54">/</tspan>
+                    </text>
+                    <text id="&gt;" font-size="65.3617021">
+                        <tspan x="59.6288147" y="54">&gt;</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

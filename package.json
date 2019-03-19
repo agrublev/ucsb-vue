@@ -1,26 +1,49 @@
 {
-  "name": "classvue1",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "start": "parcel src/index.html --no-cache --open",
-    "build": "run-s clean build:parcel",
-    "build:parcel": "NODE_ENV=production parcel build ./src/index.html --target=browser -d ./dist --public-url ./ --no-cache",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "parcel": "^1.11.0",
-    "vue": "^2.5.22"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "eslint": "^5.13.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.16.4",
-    "vue-template-compiler": "^2.5.21"
-  }
+    "name": "classvue1",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "auto": "node automation/index.js",
+        "start": "run-p start:parcel start:serve start:open",
+        "start:parcel": "parcel watch public/index.html",
+        "start:serve": "firebase serve --only hosting",
+        "start:open": "sleep 3; opn http://localhost:5000/",
+        "build": "run-s clean build:parcel",
+        "build:parcel": "NODE_ENV=production parcel build ./public/index.html --target=browser -d ./dist --public-url ./  --no-cache",
+        "deploy": "run-s clean build:parcel deploy:web",
+        "deploy:web": "firebase deploy --only hosting",
+        "clean": "rimraf dist && rimraf .cache"
+    },
+    "dependencies": {
+        "fonts": "^0.0.2",
+        "pages": "^0.0.16",
+        "parcel": "^1.11.0",
+        "vendor": "^1.7.0",
+        "vue": "^2.5.22"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-regenerator": "^7.3.4",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@vue/cli-plugin-babel": "^3.4.0",
+        "@vue/cli-service": "^3.4.0",
+        "@vue/eslint-config-prettier": "^4.0.1",
+        "babel-polyfill": "^6.26.0",
+        "bootstrap-vue": "^2.0.0-rc.15",
+        "chalk": "^2.4.2",
+        "css-loader": "^2.1.1",
+        "eslint": "^5.13.0",
+        "firebase": "^5.9.0",
+        "firebase-tools": "^6.5.0",
+        "inquirer": "^6.2.2",
+        "jquery": "^3.3.1",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "npm-run-all": "^4.1.5",
+        "opn-cli": "^4.0.0",
+        "prettier": "^1.16.4",
+        "rimraf": "^2.6.3",
+        "vue-router": "^3.0.2",
+        "vue-template-compiler": "^2.5.21"
+    }
 }
